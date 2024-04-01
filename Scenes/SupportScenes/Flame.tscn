@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://re0jcq07x1ot"]
+
+[ext_resource type="Texture2D" uid="uid://di5y5xcb5gxt8" path="res://Assets/Effects/Flame1.png" id="1_ovt5y"]
+[ext_resource type="Texture2D" uid="uid://dyh76uynks1wf" path="res://Assets/Effects/Flame2.png" id="2_dl3ow"]
+[ext_resource type="Texture2D" uid="uid://bpak0wt5p1su6" path="res://Assets/Effects/Flame3.png" id="3_n5dof"]
+[ext_resource type="Texture2D" uid="uid://dw7rdwgrdiat7" path="res://Assets/Effects/Flame4.png" id="4_r8yrc"]
+[ext_resource type="Texture2D" uid="uid://cdcwqj7ddavc0" path="res://Assets/Effects/Flame5.png" id="5_moy6y"]
+[ext_resource type="Script" path="res://Scenes/SupportScenes/Flame.gd" id="6_ifugx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_puaw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ovt5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ovt5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dl3ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dl3ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n5dof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r8yrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_moy6y")
+}],
+"loop": false,
+"name": &"Flame",
+"speed": 5.0
+}]
+
+[node name="Flame" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_puaw1")
+animation = &"Flame"
+frame = 4
+frame_progress = 1.0
+speed_scale = 2.0
+script = ExtResource("6_ifugx")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
