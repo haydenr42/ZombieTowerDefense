@@ -15,7 +15,7 @@ func _ready():
 		var inspect_button_instance = inspect_button.instantiate()
 		add_child(inspect_button_instance)
 		self.get_node("Range/CollisionShape2D").get_shape().radius =0.5 * GameData.tower_data[type]["range"]
-
+		
 func _physics_process(delta):
 	if enemy_array.size() != 0 and built:
 		select_enemy()

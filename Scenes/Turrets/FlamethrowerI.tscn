@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://boh5eo2ja7tat"]
+
+[ext_resource type="Script" path="res://Scenes/Turrets/FlamethrowerI.gd" id="1_fll5y"]
+[ext_resource type="Texture2D" uid="uid://c4l5qshdx8o4i" path="res://Assets/Towers/flamethrower.png" id="2_1nu6u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2su8j"]
+radius = 132.13
+
+[node name="FlamethrowerI" type="Node2D"]
+script = ExtResource("1_fll5y")
+
+[node name="Turret" type="Sprite2D" parent="."]
+texture = ExtResource("2_1nu6u")
+
+[node name="Muzzle" type="Marker2D" parent="Turret"]
+position = Vector2(78, 0)
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_2su8j")
+one_way_collision_margin = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

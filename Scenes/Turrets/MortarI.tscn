@@ -1,0 +1,155 @@
+[gd_scene load_steps=15 format=3 uid="uid://b1kh0b80abtmf"]
+
+[ext_resource type="Texture2D" uid="uid://cdx28mggerdt0" path="res://Assets/Towers/mortarBase.png" id="1_427wl"]
+[ext_resource type="Script" path="res://Scenes/Turrets/MortarI.gd" id="1_i1br0"]
+[ext_resource type="Texture2D" uid="uid://cu3p60trlc7c1" path="res://Assets/Towers/mortarTurret.png" id="2_oq1wu"]
+[ext_resource type="Texture2D" uid="uid://b08htaqbg2087" path="res://Assets/Effects/mortarFlash.png" id="4_0j1wj"]
+[ext_resource type="Texture2D" uid="uid://b52t60tv2c7y8" path="res://Assets/Effects/explosion1.png" id="5_k0m72"]
+[ext_resource type="Texture2D" uid="uid://dpj0flwjiewp8" path="res://Assets/Effects/explosion2.png" id="6_mrdtg"]
+[ext_resource type="Texture2D" uid="uid://cobogmukq7wf4" path="res://Assets/Effects/explosion3.png" id="7_ipcth"]
+[ext_resource type="Texture2D" uid="uid://dl0yi1xkv3wft" path="res://Assets/Effects/explosion4.png" id="8_7rxwi"]
+[ext_resource type="Texture2D" uid="uid://ccy4p2f0xhkdl" path="res://Assets/Effects/explosion5.png" id="9_66o78"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4n0lu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ysada"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_k0m72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mrdtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ipcth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7rxwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_66o78")
+}],
+"loop": false,
+"name": &"MortarExplosion",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_qhv1o"]
+resource_name = "Flash"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/Muzzle/MuzzleFlash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/Muzzle/MuzzleFlash:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_gvosj"]
+resource_name = "Explode"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwcil"]
+_data = {
+"Explode": SubResource("Animation_gvosj"),
+"Flash": SubResource("Animation_qhv1o")
+}
+
+[node name="MortarI" type="Node2D"]
+script = ExtResource("1_i1br0")
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(9, -9)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_427wl")
+
+[node name="Turret" type="Sprite2D" parent="."]
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_oq1wu")
+offset = Vector2(10, -2)
+
+[node name="Muzzle" type="Marker2D" parent="Turret"]
+position = Vector2(25, 0)
+
+[node name="MuzzleFlash" type="Sprite2D" parent="Turret/Muzzle"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.66667, 0)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_0j1wj")
+offset = Vector2(4, -5)
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_4n0lu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_ysada")
+animation = &"MortarExplosion"
+speed_scale = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kwcil")
+}
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

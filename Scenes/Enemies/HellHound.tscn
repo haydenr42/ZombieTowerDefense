@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crk2urp2qpu3f" path="res://Assets/UI/HPbar.jpg" id="4_4bkxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ui4qo"]
-size = Vector2(45, 13)
+size = Vector2(51, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1fnl2"]
 animations = [{
@@ -23,15 +23,17 @@ animations = [{
 }]
 
 [node name="HellHound" type="PathFollow2D"]
+loop = false
 script = ExtResource("1_wnlfs")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0.5, 1)
+position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_ui4qo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_1fnl2")
 frame = 1
 frame_progress = 1.0

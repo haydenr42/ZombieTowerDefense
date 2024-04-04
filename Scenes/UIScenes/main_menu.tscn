@@ -36,15 +36,12 @@ size_flags_horizontal = 8
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="NewGame" type="TextureButton" parent="M/VB"]
+[node name="Play" type="TextureButton" parent="M/VB"]
 custom_minimum_size = Vector2(350, 75)
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("2_i0vg1")
-texture_pressed = ExtResource("3_svxdy")
-stretch_mode = 0
 
-[node name="Label" type="Label" parent="M/VB/NewGame"]
+[node name="Label" type="Label" parent="M/VB/Play"]
 layout_mode = 0
 offset_right = 350.0
 offset_bottom = 75.0
@@ -54,7 +51,7 @@ theme_override_constants/outline_size = 6
 theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("4_5x8kk")
 theme_override_font_sizes/font_size = 40
-text = "New Game"
+text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -14,13 +14,19 @@ var enemies_in_wave
 
 var base_health = 100;
 
+var level = 1
+
+
 
 @onready var balance = get_node("UI/HUD/InfoBar/H/Money")
 var cash = 100;
 
 func _ready():
+	var map = load("res://Scenes/Maps/Map" + str(level) + ".tscn").instantiate()
+	add_child(map)
+	move_child(map, 0)
 	balance.text = str(cash)
-	map_node = get_node("Map1") 	
+	map_node = get_node("Map" + str(level))
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
 	
@@ -68,11 +74,11 @@ func spawn_enemies(wave_data):
 func initiate_build_mode(tower_type):
 	if build_mode:
 		cancel_build_mode()
-	for i in get_node("Map1/Turrets").get_children():
+	for i in get_node("Map" + str(level) + "/Turrets").get_children():
 		if i.get_node_or_null("SellButton"):
 			i.get_node("SellButton").queue_free()
-	if(cash >= GameData.tower_data[tower_type + "T1"]["cost"]):
-		build_type = tower_type + "T1"
+	if(cash >= GameData.tower_data[tower_type + "I"]["cost"]):
+		build_type = tower_type + "I"
 		build_mode = true 
 		get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
 
@@ -82,7 +88,7 @@ func update_tower_preview():
 	var tile_position = map_node.get_node("TowerExclusion").map_to_local(current_tile)
 	
 	if map_node.get_node("TowerExclusion").get_cell_tile_data(0, current_tile)==null:
-		for t in get_node("Map1/Turrets").get_children():
+		for t in get_node("Map" + str(level) + "/Turrets").get_children():
 			if t.position == tile_position:
 				get_node("UI").update_tower_preview(tile_position, "ef382d91")
 				build_valid = false

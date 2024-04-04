@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bd84v5kikn2uc"]
+[gd_scene load_steps=14 format=3 uid="uid://bd84v5kikn2uc"]
 
 [ext_resource type="Script" path="res://Scenes/MainScenes/GameScene.gd" id="1_37xt6"]
-[ext_resource type="PackedScene" uid="uid://cei7xeni5cbva" path="res://Scenes/Maps/Map1.tscn" id="2_medof"]
 [ext_resource type="Script" path="res://Scenes/MainScenes/UI.gd" id="3_424ny"]
 [ext_resource type="Texture2D" uid="uid://dcyjb6qonjscm" path="res://Assets/UI/Buttons/blue_button12.png" id="4_aaxj6"]
 [ext_resource type="Texture2D" uid="uid://deari1i4bdeus" path="res://Assets/Towers/towerDefense_tile249.png" id="5_envlb"]
@@ -17,8 +16,6 @@
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_37xt6")
-
-[node name="Map1" parent="." instance=ExtResource("2_medof")]
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("3_424ny")
@@ -147,6 +144,41 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("10_y2u2t")
 theme_override_font_sizes/font_size = 20
 text = "20
+"
+horizontal_alignment = 1
+
+[node name="Mortar" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_aaxj6")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Mortar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_4a87o")
+
+[node name="Cost" type="Label" parent="UI/HUD/BuildBar/Mortar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -30.0
+offset_right = 2.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_y2u2t")
+theme_override_font_sizes/font_size = 20
+text = "30
 "
 horizontal_alignment = 1
 
