@@ -142,6 +142,7 @@ offset = Vector2(4, -5)
 shape = SubResource("CircleShape2D_4n0lu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ysada")
 animation = &"MortarExplosion"

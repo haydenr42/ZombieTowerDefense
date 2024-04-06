@@ -8,6 +8,8 @@ var ready_to_fire = true
 
 var inspect_button = preload("res://Scenes/Turrets/inspect.tscn")
 var sell_button = preload("res://Scenes/Turrets/sell_button.tscn")
+var turret_info = preload("res://Scenes/UIScenes/TurretInfo.tscn")
+
 
 func _ready():
 	if built:
@@ -51,15 +53,20 @@ func _on_range_body_exited(body):
 	enemy_array.erase(body.get_parent())
 	
 func on_inspect_pressed():
+	get_parent().get_parent().get_parent().remove_buttons()
 	var sell_button_instance = sell_button.instantiate()
+	var turret_info_instance = turret_info.instantiate()
 	add_child(sell_button_instance)
+	add_child(turret_info_instance)
+	turret_info_instance.set_global_position(Vector2(225, 600))
+	turret_info_instance.type = type
 	
 func on_sell_pressed():
 	queue_free()
 	get_parent().get_parent().get_parent().update_balance(GameData.tower_data[type]["cost"] / 2) 
 	
 func _unhandled_input(event):
-	if event.is_action_released("ui_cancel"):
+	if event.is_action_released("ui_cancel") or event.is_action_released("ui_accept"):
 		delete_sell()
 		
 func delete_sell():

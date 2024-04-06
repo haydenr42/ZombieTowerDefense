@@ -77,14 +77,19 @@ func spawn_enemies(wave_data):
 func initiate_build_mode(tower_type):
 	if build_mode:
 		cancel_build_mode()
-	for i in get_node("Map" + str(level) + "/Turrets").get_children():
-		if i.get_node_or_null("SellButton"):
-			i.get_node("SellButton").queue_free()
+	remove_buttons()
 	if(cash >= GameData.tower_data[tower_type + "I"]["cost"]):
 		build_type = tower_type + "I"
 		build_mode = true 
 		get_node("UI").set_tower_preview(build_type, get_global_mouse_position())
-
+		
+func remove_buttons():
+	for i in get_node("Map" + str(level) + "/Turrets").get_children():
+		if i.get_node_or_null("SellButton"):
+			i.get_node("SellButton").queue_free()
+		if i.get_node_or_null("TurretInfo"):
+			i.get_node("TurretInfo").queue_free()
+			
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
 	var current_tile = map_node.get_node("TowerExclusion").local_to_map(mouse_position)

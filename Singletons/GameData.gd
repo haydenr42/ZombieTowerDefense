@@ -5,25 +5,25 @@ var tower_data = {
 		"damage" : 20,
 		"rof" : 0.8,
 		"range" : 350,
-		"category" : "Projectile",
+		"dmgtype" : "Physical",
 		"cost" : 50},
 	"MissileI": {
 		"damage" : 100,
 		"rof" : 3,
 		"range": 550,
-		"category": "Missile",
+		"dmgtype": "Physical",
 		"cost" : 75},
 	"FlamethrowerI": {
 		"damage" : 0.5,
 		"range" : 200,
 		"rof" : 0,
-		"category" : "Fire",
+		"dmgtype" : "Fire",
 		"cost" : 20},
 	"MortarI": {
 		"damage" : 35,
-		"range": 450,
+		"range": 550,
 		"rof" : 3.5,
-		"category" : "Artillery",
+		"dmgtype" : "Physical",
 		"cost" : 30}
 	}
 	
@@ -33,6 +33,12 @@ var enemy_data = {
 		"type" : "Organic",
 		"reward" : 2,
 		"speed": 75,
+		"penalty" : 10},
+	"HazmatZombie": {
+		"hp" : 200,
+		"type" : "Organic",
+		"reward" : 5,
+		"speed": 60,
 		"penalty" : 10},
 	"BlueTank": {
 		"hp" : 150,
@@ -51,8 +57,8 @@ var enemy_data = {
 var wave_data = {
 	"Map1": {
 		"wave_count": 4,
-		"wave1" : [["HellHound",1],["Zombie",1],["HellHound",1],["Zombie",1]],
-		"wave2" : [["Zombie",2],["Zombie",2],["BlueTank",6],["BlueTank",1],["Zombie",2]],
+		"wave1" : [["HazmatZombie",3],["HellHound",1],["Zombie",1],["HellHound",1],["Zombie",1]],
+		"wave2" : [["Zombie",2],["Zombie",2],["BlueTank",6],["BlueTank",1],["Zombie",2],["HazmatZombie",3]],
 		"wave3" : [["BlueTank",2],["BlueTank",2],["Zombie",6],["Zombie",1],["Zombie",2],["BlueTank",2],["Zombie",2],["Zombie",6],["Zombie",1],["Zombie",2]],
 		"wave4" : [["Zombie",2],["Zombie",2],["Zombie",6],["Zombie",1],["Zombie",2],["Zombie",2],["Zombie",2],["Zombie",6],["Zombie",1],["Zombie",2]]},
 	"Map2": {

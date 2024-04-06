@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://coqe83hlyiw00"]
+[gd_scene load_steps=6 format=3 uid="uid://curgkl7birofa"]
 
-[ext_resource type="Texture2D" uid="uid://t4y7j68cjd1s" path="res://Assets/Enemies/Zombie.png" id="1_v2isc"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Zombie.gd" id="1_x2e8r"]
-[ext_resource type="Texture2D" uid="uid://crk2urp2qpu3f" path="res://Assets/UI/HPbar.jpg" id="2_hwjq4"]
-[ext_resource type="AudioStream" uid="uid://dl8sommup4eoh" path="res://Assets/Sounds/zombieScreech.mp3" id="4_dc1dk"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Zombie.gd" id="1_ejera"]
+[ext_resource type="Texture2D" uid="uid://cp6ic6ixt1igq" path="res://Assets/Enemies/Hazmat.png" id="2_0ywe5"]
+[ext_resource type="Texture2D" uid="uid://crk2urp2qpu3f" path="res://Assets/UI/HPbar.jpg" id="3_q1m1h"]
+[ext_resource type="AudioStream" uid="uid://dl8sommup4eoh" path="res://Assets/Sounds/zombieScreech.mp3" id="4_hlu80"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkmrb"]
 radius = 18.0
 
-[node name="Zombie" type="PathFollow2D"]
+[node name="HazmatZombie" type="PathFollow2D"]
 loop = false
-script = ExtResource("1_x2e8r")
+script = ExtResource("1_ejera")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
@@ -19,7 +19,7 @@ shape = SubResource("CircleShape2D_dkmrb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_v2isc")
+texture = ExtResource("2_0ywe5")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 anchors_preset = 15
@@ -34,8 +34,8 @@ grow_vertical = 2
 scale = Vector2(0.34, 0.34)
 size_flags_stretch_ratio = 0.0
 value = 100.0
-texture_under = ExtResource("2_hwjq4")
-texture_progress = ExtResource("2_hwjq4")
+texture_under = ExtResource("3_q1m1h")
+texture_progress = ExtResource("3_q1m1h")
 tint_under = Color(0.239216, 0.239216, 0.239216, 1)
 tint_progress = Color(0.235294, 0.498039, 0.196078, 1)
 
@@ -43,5 +43,5 @@ tint_progress = Color(0.235294, 0.498039, 0.196078, 1)
 position = Vector2(-12, -7)
 
 [node name="Screech" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_dc1dk")
+stream = ExtResource("4_hlu80")
 volume_db = 5.522

@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var bullet_speed = 360
+var bullet_speed = 370
 var velocity
 var enemy_pos
 
