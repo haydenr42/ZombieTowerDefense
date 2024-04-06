@@ -3,7 +3,7 @@ extends Node
 var tower_data = {
 	"GunI": {
 		"damage" : 20,
-		"rof" : 1,
+		"rof" : 0.8,
 		"range" : 350,
 		"category" : "Projectile",
 		"cost" : 50},
@@ -22,7 +22,7 @@ var tower_data = {
 	"MortarI": {
 		"damage" : 35,
 		"range": 450,
-		"rof" : 4,
+		"rof" : 3.5,
 		"category" : "Artillery",
 		"cost" : 30}
 	}
@@ -31,20 +31,20 @@ var enemy_data = {
 	"Zombie": {
 		"hp" : 100,
 		"type" : "Organic",
-		"reward" : 25,
-		"speed": 50,
+		"reward" : 2,
+		"speed": 75,
 		"penalty" : 10},
 	"BlueTank": {
 		"hp" : 150,
 		"type" : "Machine",
-		"reward" : 50,
+		"reward" : 5,
 		"speed" : 90,
 		"penalty": 20},
 	"HellHound": {
 		"hp" : 75,
 		"type" : "Organic",
-		"reward": 5,
-		"speed": 50,
+		"reward": 1,
+		"speed": 100,
 		"penalty": 5}
 }
 

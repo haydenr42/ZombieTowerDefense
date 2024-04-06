@@ -32,5 +32,7 @@ visible = false
 shape = SubResource("CircleShape2D_xxwps")
 one_way_collision_margin = 0.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

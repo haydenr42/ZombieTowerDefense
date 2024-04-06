@@ -2,6 +2,9 @@ extends CanvasLayer
 
 @onready var hp_bar = get_node("HUD/InfoBar/H/HP")
 @onready var wave_counter = get_node("HUD/WaveContainer/WaveCounter")
+var settings_popup = preload("res://Scenes/UIScenes/SettingsPopup.tscn")
+
+var paused
 
 func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://Scenes/Turrets/" + tower_type + ".tscn").instantiate()
@@ -49,6 +52,21 @@ func _on_fast_forward_pressed():
 		Engine.set_time_scale(1.0)
 	else:
 		Engine.set_time_scale(2.0)
+		
+func _on_settings_pressed():
+	if get_parent().build_mode:
+		get_parent().cancel_build_mode()
+	$HUD/GameControls/Settings.process_mode = PROCESS_MODE_PAUSABLE
+	$HUD/GameControls/PausePlay.process_mode = PROCESS_MODE_PAUSABLE
+	paused = get_tree().is_paused()
+	if not paused:
+		get_tree().paused = true
+	add_child(settings_popup.instantiate())
+	move_child($SettingsPopup, 0)
+	
+func reset_process_mode():
+	$HUD/GameControls/Settings.process_mode = PROCESS_MODE_ALWAYS
+	$HUD/GameControls/PausePlay.process_mode = PROCESS_MODE_ALWAYS
 
 func update_health_bar(base_health):
 	var hp_bar_tween = $HUD/InfoBar/H/HP.create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
@@ -63,9 +81,6 @@ func update_health_bar(base_health):
 func update_wave_counter(wave):
 	var tally = load("res://Assets/UI/WaveTally" + str(wave) + ".png")
 	wave_counter.texture = tally
-	
-	
-	
 	
 	
 	

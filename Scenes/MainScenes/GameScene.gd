@@ -14,14 +14,14 @@ var enemies_in_wave
 
 var base_health = 100;
 
-var level = 1
-
+var level
 
 
 @onready var balance = get_node("UI/HUD/InfoBar/H/Money")
 var cash = 100;
 
 func _ready():
+	randomize()
 	var map = load("res://Scenes/Maps/Map" + str(level) + ".tscn").instantiate()
 	add_child(map)
 	move_child(map, 0)
@@ -65,7 +65,10 @@ func spawn_enemies(wave_data):
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
 		new_enemy.deal_base_damage.connect(on_base_damage)
 		new_enemy.on_death.connect(on_kill)
-		map_node.get_node("Path").add_child(new_enemy,true)
+		if(current_wave==1) || level==1:
+			map_node.get_node("Path").add_child(new_enemy,true)
+		else:
+			map_node.get_node("Path2").add_child(new_enemy,true)
 		await (get_tree().create_timer(i[1])).timeout
 
 ##
@@ -111,7 +114,6 @@ func verify_and_build():
 		var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
 		new_tower.type = build_type
-		new_tower.category = GameData.tower_data[build_type]["category"]
 		new_tower.built = true
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		cash -= GameData.tower_data[build_type]["cost"]
@@ -142,3 +144,4 @@ func check_wave_end():
 func update_balance(money):
 	cash+=money
 	balance.text = str(cash)
+

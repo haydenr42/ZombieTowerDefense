@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bd84v5kikn2uc"]
+[gd_scene load_steps=15 format=3 uid="uid://bd84v5kikn2uc"]
 
 [ext_resource type="Script" path="res://Scenes/MainScenes/GameScene.gd" id="1_37xt6"]
 [ext_resource type="Script" path="res://Scenes/MainScenes/UI.gd" id="3_424ny"]
@@ -8,11 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://c0ptjp62mtjxg" path="res://Assets/Icons/right.png" id="7_os0wh"]
 [ext_resource type="Texture2D" uid="uid://don0akhjtrgw4" path="res://Assets/Icons/pause.png" id="8_w31i6"]
 [ext_resource type="Texture2D" uid="uid://imkbj0r8aduc" path="res://Assets/Icons/fastForward.png" id="9_gb7hw"]
+[ext_resource type="Texture2D" uid="uid://bcdbuy3k55fqa" path="res://Assets/Icons/settingIcon.png" id="10_xhrj2"]
 [ext_resource type="FontFile" uid="uid://dfhoi7yweobey" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="10_y2u2t"]
 [ext_resource type="Texture2D" uid="uid://drlggrovoqkem" path="res://Assets/Icons/home.png" id="11_s72es"]
 [ext_resource type="Texture2D" uid="uid://crk2urp2qpu3f" path="res://Assets/UI/HPbar.jpg" id="12_taq1g"]
-[ext_resource type="PackedScene" uid="uid://d18w7kr6ryv1f" path="res://Scenes/SupportScenes/wave_counter.tscn" id="13_2b1jx"]
-[ext_resource type="PackedScene" uid="uid://y2fiahxu5ds0" path="res://Scenes/SupportScenes/round_change.tscn" id="14_p2n7i"]
+[ext_resource type="PackedScene" uid="uid://d18w7kr6ryv1f" path="res://Scenes/UIScenes/WaveCounter.tscn" id="13_2b1jx"]
+[ext_resource type="PackedScene" uid="uid://y2fiahxu5ds0" path="res://Scenes/UIScenes/RoundChange.tscn" id="14_p2n7i"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_37xt6")
@@ -187,10 +188,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -254.0
-offset_top = 50.0
-offset_right = -50.0
-offset_bottom = 150.0
+offset_left = -304.0
+offset_top = 60.0
+offset_bottom = 160.0
 grow_horizontal = 0
 
 [node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
@@ -210,6 +210,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("9_gb7hw")
+stretch_mode = 0
+
+[node name="Settings" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("10_xhrj2")
 stretch_mode = 0
 
 [node name="InfoBar" type="ColorRect" parent="UI/HUD"]
@@ -297,3 +304,4 @@ layout_mode = 2
 
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/FastForward" to="UI" method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/Settings" to="UI" method="_on_settings_pressed"]

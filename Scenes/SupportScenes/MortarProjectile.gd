@@ -3,7 +3,6 @@ extends Sprite2D
 var bullet_speed = 360
 var velocity
 var enemy_pos
-var explosion = preload("res://Scenes/SupportScenes/ExplosionAnimation.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

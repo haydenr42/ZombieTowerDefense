@@ -16,9 +16,9 @@ func select_enemy():
 	else:
 		enemy = enemy_array[enemy_index]
 
-
 func fire():
 	ready_to_fire = false
+	$MortarLaunchSound.play()
 	var mortar_projectile_instance = mortar_projectile.instantiate()
 	add_child(mortar_projectile_instance)
 	enemy_pos = $MortarProjectile.enemy_pos
@@ -27,6 +27,7 @@ func fire():
 	ready_to_fire = true
 	
 func explode():
+	$MortarImpactSound.play()
 	for i in enemies_in_blast:
 		i.on_hit(GameData.tower_data[type]["damage"])
 	$AnimatedSprite2D.set_global_position(enemy_pos)
