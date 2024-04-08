@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4l5qshdx8o4i"
-path="res://.godot/imported/flamethrower.png-d2191b1e826e34d8026069c1c05f4bef.ctex"
+uid="uid://dnyg1kr4hheo8"
+path="res://.godot/imported/Check.png-cdbbe75f96957260a370315f828382ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Towers/flamethrower.png"
-dest_files=["res://.godot/imported/flamethrower.png-d2191b1e826e34d8026069c1c05f4bef.ctex"]
+source_file="res://Assets/UI/Art/Check.png"
+dest_files=["res://.godot/imported/Check.png-cdbbe75f96957260a370315f828382ac.ctex"]
 
 [params]
 

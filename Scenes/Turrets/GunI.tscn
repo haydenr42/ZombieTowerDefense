@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://degxo70db7hpa"]
 
 [ext_resource type="Script" path="res://Scenes/Turrets/GunI.gd" id="1_228r3"]
-[ext_resource type="Texture2D" uid="uid://c4nyy6ul48kks" path="res://Assets/Towers/towerDefense_tile181.png" id="2_74ryq"]
-[ext_resource type="Texture2D" uid="uid://deari1i4bdeus" path="res://Assets/Towers/towerDefense_tile249.png" id="3_f18ul"]
+[ext_resource type="Texture2D" uid="uid://df27was7pqhc4" path="res://Assets/Towers/TowerBase.png" id="2_mbfgx"]
+[ext_resource type="Texture2D" uid="uid://u2ms6ywmoafe" path="res://Assets/Towers/Gun.png" id="3_y5jte"]
 [ext_resource type="Texture2D" uid="uid://ngaqg4irtofa" path="res://Assets/Effects/MuzzleFlash.png" id="4_5xfn5"]
 [ext_resource type="AudioStream" uid="uid://dpfou334f4dnd" path="res://Assets/Sounds/zapsplat_warfare_gun_rifles_single_shot_designed_71743.mp3" id="5_v1ayu"]
 
@@ -35,20 +35,23 @@ _data = {
 script = ExtResource("1_228r3")
 
 [node name="Base" type="Sprite2D" parent="."]
-texture = ExtResource("2_74ryq")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_mbfgx")
 
 [node name="Turret" type="Sprite2D" parent="."]
-texture = ExtResource("3_f18ul")
+position = Vector2(-1, -1)
+rotation = 6.28319
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_y5jte")
 offset = Vector2(12, 0)
 
 [node name="Muzzle" type="Marker2D" parent="Turret"]
 position = Vector2(43, 0)
 
 [node name="MuzzleFlash" type="Sprite2D" parent="Turret/Muzzle"]
-visible = false
-position = Vector2(10, 0)
+position = Vector2(13, 0.99999)
 rotation = 1.5708
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_5xfn5")
 
 [node name="Range" type="Area2D" parent="."]

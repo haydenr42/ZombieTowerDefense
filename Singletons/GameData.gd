@@ -24,7 +24,43 @@ var tower_data = {
 		"range": 550,
 		"rof" : 3.5,
 		"dmgtype" : "Physical",
-		"cost" : 30}
+		"cost" : 30},
+	"CrossBowI": {
+		"damage" : 50,
+		"range": 450,
+		"rof" : 2.5,
+		"dmgtype" : "Physical",
+		"cost" : 25},
+	"GunII": {
+		"damage" : 30,
+		"rof" : 0.5,
+		"range" : 400,
+		"dmgtype" : "Physical",
+		"cost" : 50},
+	"MissileII": {
+		"damage" : 100,
+		"rof" : 3,
+		"range": 550,
+		"dmgtype": "Physical",
+		"cost" : 75},
+	"FlamethrowerII": {
+		"damage" : 0.7,
+		"range" : 250,
+		"rof" : 0,
+		"dmgtype" : "Fire",
+		"cost" : 20},
+	"MortarII": {
+		"damage" : 50,
+		"range": 650,
+		"rof" : 3.5,
+		"dmgtype" : "Physical",
+		"cost" : 30},
+	"CrossBowII": {
+		"damage" : 75,
+		"range": 450,
+		"rof" : 2,
+		"dmgtype" : "Physical",
+		"cost" : 25}
 	}
 	
 var enemy_data = {

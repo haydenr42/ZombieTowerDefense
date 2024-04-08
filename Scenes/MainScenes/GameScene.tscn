@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd84v5kikn2uc"]
+[gd_scene load_steps=18 format=3 uid="uid://bd84v5kikn2uc"]
 
 [ext_resource type="Script" path="res://Scenes/MainScenes/GameScene.gd" id="1_37xt6"]
 [ext_resource type="Script" path="res://Scenes/MainScenes/UI.gd" id="3_424ny"]
 [ext_resource type="Texture2D" uid="uid://c5qod5au4j12i" path="res://Assets/UI/Buttons/BuildButton.png" id="3_ipsfn"]
-[ext_resource type="Texture2D" uid="uid://deari1i4bdeus" path="res://Assets/Towers/towerDefense_tile249.png" id="5_envlb"]
+[ext_resource type="Texture2D" uid="uid://u2ms6ywmoafe" path="res://Assets/Towers/Gun.png" id="4_jxow2"]
 [ext_resource type="Texture2D" uid="uid://c42blevhoe8pt" path="res://Assets/Towers/towerDefense_tile251.png" id="6_4a87o"]
 [ext_resource type="Texture2D" uid="uid://c0ptjp62mtjxg" path="res://Assets/Icons/right.png" id="7_os0wh"]
 [ext_resource type="Texture2D" uid="uid://deitp8xp7a5ol" path="res://Assets/UI/FlamethrowerChalk.png" id="7_q0b5j"]
 [ext_resource type="Texture2D" uid="uid://0rnw5yr7u1yy" path="res://Assets/UI/MortarChalk.png" id="8_b6jjo"]
 [ext_resource type="Texture2D" uid="uid://don0akhjtrgw4" path="res://Assets/Icons/pause.png" id="8_w31i6"]
 [ext_resource type="Texture2D" uid="uid://imkbj0r8aduc" path="res://Assets/Icons/fastForward.png" id="9_gb7hw"]
+[ext_resource type="Texture2D" uid="uid://xks36m853s1g" path="res://Assets/UI/BowCH.png" id="9_id8ld"]
 [ext_resource type="Texture2D" uid="uid://bcdbuy3k55fqa" path="res://Assets/Icons/settingIcon.png" id="10_xhrj2"]
 [ext_resource type="FontFile" uid="uid://dfhoi7yweobey" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="10_y2u2t"]
 [ext_resource type="Texture2D" uid="uid://drlggrovoqkem" path="res://Assets/Icons/home.png" id="11_s72es"]
@@ -35,15 +36,16 @@ mouse_filter = 2
 [node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
 custom_minimum_size = Vector2(100, 400)
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 6
 anchor_left = 1.0
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -400.0
+offset_top = -208.0
+offset_bottom = 208.0
 grow_horizontal = 0
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="Gun" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
 custom_minimum_size = Vector2(80, 80)
@@ -64,7 +66,7 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_envlb")
+texture = ExtResource("4_jxow2")
 
 [node name="Cost" type="Label" parent="UI/HUD/BuildBar/Gun"]
 layout_mode = 1
@@ -183,6 +185,47 @@ texture = ExtResource("8_b6jjo")
 expand_mode = 1
 
 [node name="Cost" type="Label" parent="UI/HUD/BuildBar/Mortar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -30.0
+offset_right = 2.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_y2u2t")
+theme_override_font_sizes/font_size = 20
+text = "30
+"
+horizontal_alignment = 1
+
+[node name="CrossBow" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_ipsfn")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/CrossBow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 10.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_id8ld")
+expand_mode = 1
+
+[node name="Cost" type="Label" parent="UI/HUD/BuildBar/CrossBow"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

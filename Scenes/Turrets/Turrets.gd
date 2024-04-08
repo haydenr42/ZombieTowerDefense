@@ -1,18 +1,20 @@
 extends Node2D
 
 var type
+var tower_level
 var enemy_array = []
 var built = false
 var enemy
 var ready_to_fire = true
 
 var inspect_button = preload("res://Scenes/Turrets/inspect.tscn")
-var sell_button = preload("res://Scenes/Turrets/sell_button.tscn")
+var sell_button = preload("res://Scenes/Turrets/SellButton.tscn")
 var turret_info = preload("res://Scenes/UIScenes/TurretInfo.tscn")
 
 
 func _ready():
 	if built:
+		tower_level = 1
 		var inspect_button_instance = inspect_button.instantiate()
 		add_child(inspect_button_instance)
 		self.get_node("Range/CollisionShape2D").get_shape().radius =0.5 * GameData.tower_data[type]["range"]
@@ -54,12 +56,21 @@ func _on_range_body_exited(body):
 	
 func on_inspect_pressed():
 	get_parent().get_parent().get_parent().remove_buttons()
-	var sell_button_instance = sell_button.instantiate()
-	var turret_info_instance = turret_info.instantiate()
-	add_child(sell_button_instance)
-	add_child(turret_info_instance)
-	turret_info_instance.set_global_position(Vector2(225, 600))
-	turret_info_instance.type = type
+	if not get_node_or_null("TurretInfo"):
+		var turret_info_instance = turret_info.instantiate()
+		add_child(turret_info_instance)
+		turret_info_instance.set_global_position(Vector2(225, 600))
+		turret_info_instance.type = type
+	if not get_node_or_null("range"):
+		var range_texture = Sprite2D.new()
+		var scaling = GameData.tower_data[type]["range"] / 600.0
+		range_texture.scale = Vector2(scaling,scaling)
+		var texture = load("res://Assets/UI/range_overlay.png")
+		range_texture.texture = texture
+		#range_texture.modulate = Color("1fa23c91")
+		range_texture.name = "range"
+		add_child(range_texture)
+		move_child(range_texture,0)
 	
 func on_sell_pressed():
 	queue_free()
@@ -67,11 +78,13 @@ func on_sell_pressed():
 	
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") or event.is_action_released("ui_accept"):
-		delete_sell()
+		delete_buttons()
 		
-func delete_sell():
-	if get_node_or_null("SellButton"):
-		get_node("SellButton").queue_free()
+func delete_buttons():
+	if get_node_or_null("TurretInfo"):
+		$TurretInfo.queue_free()
+	if(get_node_or_null("range")):
+		$range.queue_free()
 		
 	
 	

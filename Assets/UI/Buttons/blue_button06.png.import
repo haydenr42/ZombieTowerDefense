@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch0pflrgy2wj4"
-path="res://.godot/imported/CrossBow.png-5bec5dd9caaa16e1532a39cb8abfc998.ctex"
+uid="uid://b1ya02cq0i783"
+path="res://.godot/imported/blue_button06.png-cc569a4617da486d16b716b5b95ad38c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Towers/CrossBow.png"
-dest_files=["res://.godot/imported/CrossBow.png-5bec5dd9caaa16e1532a39cb8abfc998.ctex"]
+source_file="res://Assets/UI/Buttons/blue_button06.png"
+dest_files=["res://.godot/imported/blue_button06.png-cc569a4617da486d16b716b5b95ad38c.ctex"]
 
 [params]
 

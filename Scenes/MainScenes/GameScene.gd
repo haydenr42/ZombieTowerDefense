@@ -85,10 +85,10 @@ func initiate_build_mode(tower_type):
 		
 func remove_buttons():
 	for i in get_node("Map" + str(level) + "/Turrets").get_children():
-		if i.get_node_or_null("SellButton"):
-			i.get_node("SellButton").queue_free()
 		if i.get_node_or_null("TurretInfo"):
 			i.get_node("TurretInfo").queue_free()
+		if i.get_node_or_null("range"):
+			i.get_node("range").queue_free()
 			
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()

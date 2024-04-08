@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7ybot3fi5ei5"]
+[gd_scene load_steps=6 format=3 uid="uid://c7ybot3fi5ei5"]
 
 [ext_resource type="Texture2D" uid="uid://c5qod5au4j12i" path="res://Assets/UI/Buttons/BuildButton.png" id="1_v08xu"]
 [ext_resource type="Script" path="res://Scenes/UIScenes/TurretInfo.gd" id="1_yx84e"]
+[ext_resource type="Texture2D" uid="uid://c65nogksl3kha" path="res://Assets/UI/Buttons/PackAPunch.png" id="2_47kf7"]
+[ext_resource type="Texture2D" uid="uid://b68u1xlxkogmy" path="res://Assets/Icons/sellicon.png" id="4_o2qpe"]
+[ext_resource type="Texture2D" uid="uid://bn56p6x382sbd" path="res://Assets/Icons/selliconConfirm.png" id="5_gtaf5"]
 
 [node name="TurretInfo" type="ColorRect"]
 custom_minimum_size = Vector2(0, 120)
@@ -66,6 +69,71 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
+[node name="VArrows" type="VBoxContainer" parent="H"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="H/VArrows"]
+visible = false
+layout_mode = 2
+text = "->"
+
+[node name="Label2" type="Label" parent="H/VArrows"]
+visible = false
+layout_mode = 2
+text = "->"
+
+[node name="Label3" type="Label" parent="H/VArrows"]
+visible = false
+layout_mode = 2
+text = "->"
+
+[node name="Label4" type="Label" parent="H/VArrows"]
+visible = false
+layout_mode = 2
+text = "->"
+
+[node name="V2" type="VBoxContainer" parent="H"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="UpDamageText" type="Label" parent="H/V2"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="UpFireRateText" type="Label" parent="H/V2"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="UpRangeText" type="Label" parent="H/V2"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="UpDamageTypeText" type="Label" parent="H/V2"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="PackButton" type="TextureButton" parent="H"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("2_47kf7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SellButton" type="TextureButton" parent="H"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture_normal = ExtResource("4_o2qpe")
+texture_hover = ExtResource("5_gtaf5")
+stretch_mode = 0
+
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.560784)
 layout_mode = 0
@@ -83,3 +151,6 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="H/PackButton" to="." method="_on_pack_button_pressed"]
+[connection signal="pressed" from="H/SellButton" to="." method="_on_sell_button_pressed"]

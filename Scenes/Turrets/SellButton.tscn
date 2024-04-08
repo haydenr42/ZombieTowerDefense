@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfjy30bhnslq7"]
+
+[ext_resource type="Texture2D" uid="uid://b68u1xlxkogmy" path="res://Assets/Icons/sellicon.png" id="1_4263c"]
+[ext_resource type="Texture2D" uid="uid://bn56p6x382sbd" path="res://Assets/Icons/selliconConfirm.png" id="2_63tl1"]
+
+[sub_resource type="GDScript" id="GDScript_w711c"]
+script/source = "extends TextureButton
+
+
+"
+
+[node name="SellButton" type="TextureButton"]
+offset_left = -48.0
+offset_top = -134.0
+offset_right = 61.0
+offset_bottom = -27.0
+texture_normal = ExtResource("1_4263c")
+texture_hover = ExtResource("2_63tl1")
+stretch_mode = 0
+script = SubResource("GDScript_w711c")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

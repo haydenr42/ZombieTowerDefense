@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://boh5eo2ja7tat"]
 
 [ext_resource type="Script" path="res://Scenes/Turrets/FlamethrowerI.gd" id="1_fll5y"]
-[ext_resource type="Texture2D" uid="uid://c4l5qshdx8o4i" path="res://Assets/Towers/flamethrower.png" id="2_1nu6u"]
+[ext_resource type="Texture2D" uid="uid://c4l5qshdx8o4i" path="res://Assets/Towers/FlamethrowerI.png" id="2_1nu6u"]
 [ext_resource type="AudioStream" uid="uid://daqlv0p3cg3xh" path="res://Assets/Sounds/zapsplat_nature_fire_flames_large_burn_movement_002_21079.mp3" id="3_lqyp0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2su8j"]
