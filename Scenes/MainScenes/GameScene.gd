@@ -4,7 +4,7 @@ signal game_finished(result)
 
 var map_node 
 
-var build_mode= false
+var build_mode = false
 var build_valid = false 
 var build_location
 var build_type 
@@ -18,7 +18,7 @@ var level
 
 
 @onready var balance = get_node("UI/HUD/InfoBar/H/Money")
-var cash = 100;
+var cash = 150;
 
 func _ready():
 	randomize()
@@ -121,8 +121,7 @@ func verify_and_build():
 		new_tower.type = build_type
 		new_tower.built = true
 		map_node.get_node("Turrets").add_child(new_tower, true)
-		cash -= GameData.tower_data[build_type]["cost"]
-		balance.text = str(cash)
+		update_balance(-GameData.tower_data[build_type]["cost"])
 		
 func on_base_damage(damage):
 	base_health-=damage

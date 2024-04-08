@@ -61,6 +61,7 @@ func on_destroy():
 	emit_signal("on_death", kill_reward)
 	await(get_tree().create_timer(0.2)).timeout
 	self.queue_free()
-
 	
+func burning():
+	pass
 	

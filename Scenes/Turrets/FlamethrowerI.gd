@@ -8,6 +8,7 @@ func fire():
 	if not get_node_or_null("Turret/Muzzle/AnimatedSprite2D"):
 		ignite()
 	enemy.on_hit(GameData.tower_data[type]["damage"])
+	enemy.burning()
 	await(get_tree().create_timer(GameData.tower_data[type]["rof"])).timeout
 	ready_to_fire = true
 

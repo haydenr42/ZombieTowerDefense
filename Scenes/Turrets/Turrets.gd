@@ -41,6 +41,7 @@ func select_enemy():
 	var enemy_index = enemy_progress_array.find(max_offset)
 	enemy = enemy_array[enemy_index]
 	
+#ADD send level parameter to determine fire behavior for each tower
 func fire():
 	ready_to_fire = false
 	enemy.on_hit(GameData.tower_data[type]["damage"])
@@ -76,6 +77,19 @@ func on_sell_pressed():
 	queue_free()
 	get_parent().get_parent().get_parent().update_balance(GameData.tower_data[type]["cost"] / 2) 
 	
+func on_upgrade_pressed():
+	var upgraded_type =  $TurretInfo.upgraded_type
+	if get_parent().get_parent().get_parent().cash >= GameData.tower_data[upgraded_type]["cost"]:
+		get_parent().get_parent().get_parent().update_balance(-GameData.tower_data[upgraded_type]["cost"]) 
+		self.name = upgraded_type
+		self.type = upgraded_type 
+		#get_parent().get_node("Turret").modulate = Color(0.455, 1, 0.161)
+		get_node("Turret").texture = load("res://Assets/Towers/" + upgraded_type + ".png")
+		get_node("Turret").scale =Vector2(1.2, 1.2)
+		tower_level += 1
+		delete_buttons()
+		on_upgraded()
+	
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") or event.is_action_released("ui_accept"):
 		delete_buttons()
@@ -85,6 +99,9 @@ func delete_buttons():
 		$TurretInfo.queue_free()
 	if(get_node_or_null("range")):
 		$range.queue_free()
+		
+func on_upgraded():
+	pass
 		
 	
 	

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Turrets/inspect.gd" id="1_peuri"]
 
 [node name="Inspect" type="Button"]
+process_mode = 3
 modulate = Color(1, 1, 1, 0)
 offset_left = -26.0
 offset_top = -26.0

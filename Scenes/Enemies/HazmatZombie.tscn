@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://curgkl7birofa"]
+[gd_scene load_steps=7 format=3 uid="uid://curgkl7birofa"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Zombie.gd" id="1_ejera"]
 [ext_resource type="Texture2D" uid="uid://cp6ic6ixt1igq" path="res://Assets/Enemies/Hazmat.png" id="2_0ywe5"]
 [ext_resource type="Texture2D" uid="uid://crk2urp2qpu3f" path="res://Assets/UI/HPbar.jpg" id="3_q1m1h"]
 [ext_resource type="AudioStream" uid="uid://dl8sommup4eoh" path="res://Assets/Sounds/zombieScreech.mp3" id="4_hlu80"]
+[ext_resource type="AudioStream" uid="uid://b04x5p74ad5y8" path="res://Assets/Sounds/ZombieBurning.mp3" id="5_jbqpx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkmrb"]
 radius = 18.0
@@ -45,3 +46,7 @@ position = Vector2(-12, -7)
 [node name="Screech" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hlu80")
 volume_db = 5.522
+
+[node name="Burning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jbqpx")
+volume_db = 4.602
